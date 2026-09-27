@@ -5,7 +5,7 @@ Short notes on the choices that shaped the [Hope Church site](https://www.hopech
 | # | Decision | Status |
 | --- | --- | --- |
 | [0001](0001-nextjs-and-sanity.md) | Rebuild on Next.js and Sanity | Accepted |
-| [0002](0002-preserve-urls.md) | Preserve existing URLs and redirect the rest | Accepted |
+| [0002](0002-preserve-urls.md) | Preserve existing URLs and redirect the rest | Accepted, partly implemented |
 | [0003](0003-automated-accessibility-scans.md) | Run automated accessibility scans in CI | Accepted |
 
 Items in [brackets] are still to be filled in.

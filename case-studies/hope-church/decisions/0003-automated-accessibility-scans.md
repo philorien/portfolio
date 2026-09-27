@@ -19,7 +19,7 @@ The run fails on serious or critical issues in the site's own code. Third-party 
 
 - **Lighthouse CI.** Useful for performance, but its accessibility score summarizes rather than lists every failure.
 - **Manual audits only.** Necessary but infrequent; they don't catch regressions between audits.
-- **Scanning every Vercel preview deployment from the site repo.** Catches regressions before they reach production, which a production scan can't. [Why not yet, or when you plan to add it.]
+- **Scanning every Vercel preview deployment from the site repo.** Catches regressions before they reach production, which a production scan can't. Not set up yet.
 
 ## Consequences
 

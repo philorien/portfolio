@@ -8,15 +8,15 @@ This repo is the evidence behind that sentence: case studies of shipped client w
 
 ### [Hope Presbyterian Church](case-studies/hope-church/README.md)
 
-Moved a church website off a hosted platform onto Next.js and Sanity, starting from a 22-point audit. Kept key URLs working, gave staff structured editing in Sanity with accessibility guardrails built into the fields, and added an automated WCAG 2.2 scan.
+Moved a church website off a hosted platform onto Next.js and Sanity, starting from a 22-point audit. Moved the sermon archive and podcast, gave staff structured editing in Sanity with accessibility guardrails built into the fields, and added an automated WCAG 2.2 scan.
 
 [Case study](case-studies/hope-church/README.md) · [Decision records](case-studies/hope-church/decisions/README.md) · [Accessibility results](case-studies/hope-church/accessibility.md) · [Live site](https://www.hopechurchcolumbus.org)
 
-### [Dragonfly](case-studies/dragonfly/README.md)
+### [Dragonfly Bookshop](case-studies/dragonfly/README.md)
 
-[One line: what it replaced and what it does.]
+A first website for an independent bookstore in Hilliard, Ohio. The catalog comes from the shop's Square register, special orders go to Airtable, and events come from Luma. 1,206 visitors in its first month.
 
-[Case study](case-studies/dragonfly/README.md) · [Live site, if public]
+[Case study](case-studies/dragonfly/README.md) · [Live site](https://www.dragonflybookshop.com)
 
 ## Tools
 
