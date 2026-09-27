@@ -1,0 +1,59 @@
+name: Accessibility scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Site to scan (must serve /sitemap.xml)"
+        required: true
+        default: "https://www.hopechurchcolumbus.org"
+      first_party_only:
+        description: "Exclude iframes (third-party embeds)"
+        type: boolean
+        default: true
+  # Weekly production scan of the Hope Church site, Mondays 13:00 UTC.
+  # Disabled until the contrast fixes in case-studies/hope-church/accessibility.md
+  # are deployed and the scan passes.
+  # schedule:
+  #   - cron: "0 13 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: tools/a11y-scan
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: tools/a11y-scan/package-lock.json
+
+      - run: npm ci
+
+      - run: npx playwright install --with-deps chromium
+
+      - name: Run scan
+        env:
+          # Inputs are passed through env, not interpolated into the script.
+          BASE_URL: ${{ inputs.base_url || 'https://www.hopechurchcolumbus.org' }}
+          FIRST_PARTY: ${{ github.event_name == 'schedule' || inputs.first_party_only }}
+        run: |
+          flags="--fail-on=serious"
+          if [ "$FIRST_PARTY" = "true" ]; then flags="$flags --first-party-only"; fi
+          node a11y-scan.mjs "$BASE_URL" $flags
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: a11y-report
+          path: tools/a11y-scan/a11y-report.json
+          if-no-files-found: ignore
